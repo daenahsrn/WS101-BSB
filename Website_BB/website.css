@@ -1,0 +1,309 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: var(--white);
+    margin: auto;
+    padding: 0;
+    line-height: 1.5;
+}
+.header {
+    background: var(--black);
+    padding: 20px 0;
+    position: sticky; 
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+}
+.navigators nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.navigators a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 10px 20px;
+    border-radius: 25px; 
+    background: transparent;
+}
+.navigators a:hover {
+    background: var(--sunflowerYellow);
+    color: var(--black);
+    box-shadow: 0 0 10px var(--sunflowerYellow);
+}
+
+.hero_banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero_banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills without distortion */
+}
+
+.music_Home {
+    padding: 60px 20px;
+    text-align: center;
+}
+.music_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for cards */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.music_Home a {
+    background-color: var(--sunflowerYellow);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.music_Home a:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.previews {
+    padding: 60px 20px;
+    background: var(--white);
+    text-align: center;
+}
+.preview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for cards */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.preview-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.preview-card h3 {
+    color: var(--sunflowerYellow);
+    font-size: 1.5em;
+    margin: 15px 0 10px;
+}
+
+.preview-card p {
+    color: var(--black);
+    font-size: 1em;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.preview-link {
+    display: inline-block;
+    background: var(--sunflowerYellow);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+}
+
+.footer {
+    background: var(--black);
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid var(--sunflowerYellow);
+}
+#socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+#socials a:hover{
+    transform: scale(1.1);
+}
+#socials img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.footer p {
+    color: var(--white); 
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.contents_about {
+    padding: 0;
+}
+.about_group {
+    padding: 60px 20px;
+    text-align: center;
+}
+.group_card {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.group_card h1 {
+    color: var(--sunflowerYellow);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+.bandMembers_Title h1 {
+    color: var(--sunflowerYellow);
+    font-size: 2.5em;
+    text-align: center;
+}
+.band_Members {
+    padding: 60px 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 20px;
+}
+.band_card {
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.band_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.band_card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+    border: 3px solid var(--sunflowerYellow);
+}
+
+.band_name {
+    color: var(--sunflowerYellow);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px var(--black);
+}
+
+.band_desc {
+    color: var(--black);
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.contents_TopSongs {
+    padding: 0;
+}
+.container {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.topSongs_text {
+    margin-bottom: 40px;
+}
+.topSongs_text h1 {
+    color: var(--sunflowerYellow);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+.album_card {
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 10px 20px;
+    vertical-align: top;
+}
+.album_card img {
+    width: 100%;
+    height: 100%px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 3px solid var(--sunflowerYellow);
+}
+.album_card h3 {
+    color: var(--sunflowerYellow);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.release_date {
+    color: var(--black);
+    font-size: 1em;
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+.album_card p {
+    color: var(--black);
+    font-size: 1em;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.contents_history {
+    padding: 0;
+}
+.history .container {
+    padding: 60px 20px;
+    max-width: 800px; /* Centered, narrower for timeline feel */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between timeline entries */
+}
+.history [class*="card"] {
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left; 
+}
+.history [class*="card"]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+.history [class*="card"] h1 {
+    color: var(--sunflowerYellow);
+    font-size: 2em;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+:root {
+    --black: #001514;
+    --white: #FBFFFE;
+    --darkRed: #6B0504;
+    --sunflowerYellow: #E6AF2E;
+    --blue: #36558F;
+}
