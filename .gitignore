@@ -1,49 +1,47 @@
-```gitignore
+# Examples 1:
+(empty — output nothing)
+
+# Example 2 (Project with artifacts):
 # Compiled and build artifacts
 *.pyc
 __pycache__/
 *.o
 *.obj
-*.exe
-*.dll
-*.so
-*.a
-*.out
-
-# Dependencies
-node_modules/
-venv/
-.venv/
-.env
-.env.local
-.env.*
-
-# Build directories
 dist/
 build/
 target/
-.gradle/
 
-# Editors
-.vscode/
-.idea/
-*.swp
-*.swo
+# Dependencies
+.venv/
+venv/
+node_modules/
+.mypy_cache/
+.pytest_cache/
+.gradle/
 
 # Logs and temp files
 *.log
 *.tmp
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
 
 # Coverage
 coverage/
 htmlcov/
 .coverage
 
-# OS specific
+# System
 .DS_Store
 Thumbs.db
 
-# Caching
-.mypy_cache/
-.pytest_cache/
-```
+# Original rules preserved
+*.log
