@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Backstreet Boys</title>
-    <link rel="stylesheet" href="website.css">
+    <title>Backstreet Boys - About The Band</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about the Backstreet Boys - Nick, Kevin, AJ, Howie, and Brian">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-text">BACKSTREET BOYS</div>
+        </div>
+    </div>
+
     <section class="header">
-        <header id ="header">
+        <header id="header">
             <div class="navigators">
                 <nav>
-                    <a href="index.html" class="home_nav">Backstreet Boys</a>
-                    <a href="about.html" class="about_nav">About</a>
-                    <a href="topSongs.html" class="topsongs_nav">Top Hits</a>
-                    <a href="history.html" class="history">Band's History</a>
+                    <a href="index.html" class="logo">Backstreet Boys</a>
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="home_nav">Home</a></li>
+                        <li><a href="about.html" class="about_nav">About</a></li>
+                        <li><a href="topSongs.html" class="topsongs_nav">Top Hits</a></li>
+                        <li><a href="history.html" class="history">Band's History</a></li>
+                    </ul>
+                    <div class="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </nav>
             </div>
         </header>
     </section>
 
     <main class="contents_about">
+        <section class="about_hero">
+            <img src="bsbRetro.jpg" alt="Backstreet Boys Retro Photo">
+            <div class="about_hero_content">
+                <h1>About The Band</h1>
+            </div>
+        </section>
+
         <section class="about_group">
             <div class="group_card">
                 <div class="about_groupIMG">
-                    <img src="bsbRetro.jpg" alt="">
-                 </div>
-                <h1>Meet the Band</h1>
-                <p class="group_info">According to Genius, The Backstreet Boys are the most successful boy band in history, 
-                    having sold over 130 million records worldwide, and with their first nine albums 
-                    reaching the top 10 on the Billboard 200. The band rose to stardom with the release of their third album,
-                    Millenium, in the year 1999, with their most memorable song being "I want it that way". Ever since then, the
-                    band cemented itself in history as one of the most successful boy bands in history.
-                </p>
+                    <img src="bsbRetro.jpg" alt="Backstreet Boys Group Photo">
+                </div>
+                <div>
+                    <h1>Meet the Band</h1>
+                    <p class="group_info">According to Genius, The Backstreet Boys are the most successful boy band in history, 
+                        having sold over 130 million records worldwide, and with their first nine albums 
+                        reaching the top 10 on the Billboard 200. The band rose to stardom with the release of their third album,
+                        Millenium, in the year 1999, with their most memorable song being "I want it that way". Ever since then, the
+                        band cemented itself in history as one of the most successful boy bands in history.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -98,8 +126,10 @@
                 <a href="https://open.spotify.com/artist/5rSXSAkZ67PYJSvpUpkOr7?nd=1&dlsi=ef4b4bf4085344ed" class="spotify" target="_blank" rel="noopener noreferrer"><img src="spotify icon.jpg" alt="Spotify"></a>
                 <a href="https://www.tiktok.com/@backstreetboys" class="tiktok" target="_blank" rel="noopener noreferrer"><img src="tiktok icon.jpg" alt="TikTok"></a>
             </section>     
-            <p><br>© 2026 Backstreet Boys | All Rights Reserved</p>
+            <p>© 2026 Backstreet Boys | All Rights Reserved</p>
         </footer>
     </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
