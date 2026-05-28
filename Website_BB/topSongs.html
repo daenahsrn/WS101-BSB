@@ -1,83 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Backstreet Boys</title>
-    <link rel="stylesheet" href="website.css">
+    <title>Backstreet Boys - Top Songs & Albums</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Backstreet Boys top hits and albums from Millennium to DNA">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-text">BACKSTREET BOYS</div>
+        </div>
+    </div>
+
     <section class="header">
-        <header id ="header">
+        <header id="header">
             <div class="navigators">
                 <nav>
-                    <a href="index.html" class="home_nav">Backstreet Boys</a>
-                    <a href="about.html" class="about_nav">About</a>
-                    <a href="topSongs.html" class="topsongs_nav">Top Hits</a>
-                    <a href="history.html" class="history">Band's History</a>
+                    <a href="index.html" class="logo">Backstreet Boys</a>
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="home_nav">Home</a></li>
+                        <li><a href="about.html" class="about_nav">About</a></li>
+                        <li><a href="topSongs.html" class="topsongs_nav">Top Hits</a></li>
+                        <li><a href="history.html" class="history">Band's History</a></li>
+                    </ul>
+                    <div class="mobile-menu-toggle">
+                        <span></span><span></span><span></span>
+                    </div>
                 </nav>
             </div>
         </header>
     </section>
 
     <main class="contents_TopSongs">
-        <section class="container">
-            <div class="topSongs_text">
-                <h1>Top and Latest Releases</h1>
-            </div>
+        <section class="songs_hero">
+            <h1>Top & Latest Releases</h1>
+        </section>
 
-            <div class="album_card">
-                <img src="millenium 2.0.jpg" alt="2025">
-                <h3>Millennium 2.0</h3>
-                <h5 class="release_date">Released: July 11, 2025</h5>
-                <p>Larger Than Life <br></p>
-                <p>I want it that way <br></p>
-                <p>Show Me the Meaning of Being Lonely <br></p>
-                <p>It’s Gotta Be You <br></p>
-                <p>I Need You Tonight <br></p>
-            </div>
+        <section class="albums_section">
+            <div class="albums_grid">
+                <div class="album_card">
+                    <img src="millenium 2.0.jpg" alt="Millennium 2.0 Album Cover">
+                    <h3>Millennium 2.0</h3>
+                    <h5 class="release_date">Released: July 11, 2025</h5>
+                    <ul class="tracklist">
+                        <li><span class="track-number">1.</span>Larger Than Life</li>
+                        <li><span class="track-number">2.</span>I want it that way</li>
+                        <li><span class="track-number">3.</span>Show Me the Meaning of Being Lonely</li>
+                        <li><span class="track-number">4.</span>It's Gotta Be You</li>
+                        <li><span class="track-number">5.</span>I Need You Tonight</li>
+                    </ul>
+                </div>
 
-            <div class="album_card">
-                <img src="christmasAlbum.jpg" alt="xmas">
-                <h3>A Very Backstreet Christmas</h3>
-                <h5 class="release_date">Released: October 14, 2022</h5>
-                <p>White Christmas <br></p>
-                <p>The Christmas Song <br></p>
-                <p>Winter Wonderland <br></p>
-                <p>Have Yourself A Merry Little Christmas <br></p>
-                <p>Last Christmas <br></p>
-            </div>
+                <div class="album_card">
+                    <img src="christmasAlbum.jpg" alt="A Very Backstreet Christmas Album Cover">
+                    <h3>A Very Backstreet Christmas</h3>
+                    <h5 class="release_date">Released: October 14, 2022</h5>
+                    <ul class="tracklist">
+                        <li><span class="track-number">1.</span>White Christmas</li>
+                        <li><span class="track-number">2.</span>The Christmas Song</li>
+                        <li><span class="track-number">3.</span>Winter Wonderland</li>
+                        <li><span class="track-number">4.</span>Have Yourself A Merry Little Christmas</li>
+                        <li><span class="track-number">5.</span>Last Christmas</li>
+                    </ul>
+                </div>
 
-            <div class="album_card">
-                <img src="DNAAlbum.jpg" alt="DNA">
-                <h3>DNA</h3>
-                <h5 class="release_date">Released: January 25, 2019</h5>
-                <p>Don’t Go Breaking My Heart <br></p>
-                <p>Nobody Else <br></p>
-                <p>Breathe <br></p>
-                <p>New Love <br></p>
-                <p>Passionate <br></p>
-            </div>
+                <div class="album_card">
+                    <img src="DNAAlbum.jpg" alt="DNA Album Cover">
+                    <h3>DNA</h3>
+                    <h5 class="release_date">Released: January 25, 2019</h5>
+                    <ul class="tracklist">
+                        <li><span class="track-number">1.</span>Don't Go Breaking My Heart</li>
+                        <li><span class="track-number">2.</span>Nobody Else</li>
+                        <li><span class="track-number">3.</span>Breathe</li>
+                        <li><span class="track-number">4.</span>New Love</li>
+                        <li><span class="track-number">5.</span>Passionate</li>
+                    </ul>
+                </div>
 
-            <div class="album_card">
-                <img src="black&blue.jpg" alt="b&b">
-                <h3>Black & Blue</h3>
-                <h5 class="release_date">Released: November 21, 2000</h5>
-                <p>The Call <br></p>
-                <p>Shape of My Heart <br></p>
-                <p>Get Another Boyfriend <br></p>
-                <p>Shining Star <br></p>
-                <p>I Promise You (With Everything I Am) <br></p>
-            </div>
+                <div class="album_card">
+                    <img src="black&blue.jpg" alt="Black & Blue Album Cover">
+                    <h3>Black & Blue</h3>
+                    <h5 class="release_date">Released: November 21, 2000</h5>
+                    <ul class="tracklist">
+                        <li><span class="track-number">1.</span>The Call</li>
+                        <li><span class="track-number">2.</span>Shape of My Heart</li>
+                        <li><span class="track-number">3.</span>Get Another Boyfriend</li>
+                        <li><span class="track-number">4.</span>Shining Star</li>
+                        <li><span class="track-number">5.</span>I Promise You (With Everything I Am)</li>
+                    </ul>
+                </div>
 
-            <div class="album_card">
-                <img src="millenium.jpg" alt="millenium">
-                <h3>Millennium</h3>
-                <h5 class="release_date">Released: August 12, 1997</h5>
-                <p>As Long As You Love Me <br></p>
-                <p>Everybody (Backstreet’s Back) <br></p>
-                <p>All I Have to Give <br></p>
-                <p>Get Down (You’re the One for Me) <br></p>
-                <p>If You Want It To Be Good Girl (Get Yourself a Bad Boy) <br></p>
+                <div class="album_card">
+                    <img src="millenium.jpg" alt="Millennium Album Cover">
+                    <h3>Millennium</h3>
+                    <h5 class="release_date">Released: August 12, 1997</h5>
+                    <ul class="tracklist">
+                        <li><span class="track-number">1.</span>As Long As You Love Me</li>
+                        <li><span class="track-number">2.</span>Everybody (Backstreet's Back)</li>
+                        <li><span class="track-number">3.</span>All I Have to Give</li>
+                        <li><span class="track-number">4.</span>Get Down (You're the One for Me)</li>
+                        <li><span class="track-number">5.</span>If You Want It To Be Good Girl (Get Yourself a Bad Boy)</li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
@@ -85,15 +113,17 @@
     <section class="footer">
         <footer>
             <section id="socials" class="CallToAction">
-                <a href="https://www.facebook.com/backstreetboys" class="facebook" target="_blank" rel="noopener noreferrer"><img src="facebook icon.jpg" alt="Facebook"></a>
-                <a href="https://www.instagram.com/backstreetboys" class="instagram" target="_blank" rel="noopener noreferrer"><img src="instagram icon.jpg" alt="Instagram"></a>
-                <a href="https://x.com/backstreetboys" class="twitter" target="_blank" rel="noopener noreferrer"><img src="twitter.jpg" alt="Twitter"></a>
-                <a href="https://www.youtube.com/user/bsbofficial" class="youtube" target="_blank" rel="noopener noreferrer"><img src="yt icon.jpg" alt="YouTube"></a>
-                <a href="https://open.spotify.com/artist/5rSXSAkZ67PYJSvpUpkOr7?nd=1&dlsi=ef4b4bf4085344ed" class="spotify" target="_blank" rel="noopener noreferrer"><img src="spotify icon.jpg" alt="Spotify"></a>
-                <a href="https://www.tiktok.com/@backstreetboys" class="tiktok" target="_blank" rel="noopener noreferrer"><img src="tiktok icon.jpg" alt="TikTok"></a>
+                <a href="https://www.facebook.com/backstreetboys" target="_blank" rel="noopener noreferrer"><img src="facebook icon.jpg" alt="Facebook"></a>
+                <a href="https://www.instagram.com/backstreetboys" target="_blank" rel="noopener noreferrer"><img src="instagram icon.jpg" alt="Instagram"></a>
+                <a href="https://x.com/backstreetboys" target="_blank" rel="noopener noreferrer"><img src="twitter.jpg" alt="Twitter"></a>
+                <a href="https://www.youtube.com/user/bsbofficial" target="_blank" rel="noopener noreferrer"><img src="yt icon.jpg" alt="YouTube"></a>
+                <a href="https://open.spotify.com/artist/5rSXSAkZ67PYJSvpUpkOr7?nd=1&dlsi=ef4b4bf4085344ed" target="_blank" rel="noopener noreferrer"><img src="spotify icon.jpg" alt="Spotify"></a>
+                <a href="https://www.tiktok.com/@backstreetboys" target="_blank" rel="noopener noreferrer"><img src="tiktok icon.jpg" alt="TikTok"></a>
             </section>     
-            <p><br>© 2026 Backstreet Boys | All Rights Reserved</p> 
+            <p>© 2026 Backstreet Boys | All Rights Reserved</p>
         </footer>
     </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
