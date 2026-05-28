@@ -1,47 +1,46 @@
 /* ========================================
-   BACKSTREET BOYS FAN WEBSITE - REDESIGN
-   Y2K/90s Retro Cinematic Theme with VHS Aesthetics
+   BACKSTREET BOYS FAN WEBSITE
+   90s Nostalgia / Retro Pop Fan Site Theme
+   Inspired by old fan pages, teen magazines, CDs, and Y2K pop culture
    ======================================== */
 
-/* CSS VARIABLES - Color Palette */
+/* CSS VARIABLES - 90s Color Palette */
 :root {
     /* Core Colors */
+    --dark-navy: #0a1628;
+    --midnight-blue: #14213d;
+    --silver: #c0c0c0;
+    --chrome: #e8e8e8;
+    --pure-white: #ffffff;
+    --soft-white: #f5f5f5;
     --deep-black: #050505;
-    --dark-navy: #07182E;
-    --midnight-blue: #0B2447;
-    --metallic-silver: #c0c0c0;
-    --chrome-light: #e8e8e8;
-    --chrome-dark: #7a7a7a;
     
     /* Accent Colors */
     --neon-blue: #00d4ff;
-    --electric-blue: #0066ff;
-    --soft-purple: #9d4edd;
-    --purple-glow: #7b2cbf;
-    --gold-highlight: #ffd700;
-    --amber-glow: #ffb700;
+    --electric-purple: #9d4edd;
+    --soft-pink: #ffb3d9;
+    --gold: #ffd700;
     
     /* Gradients */
-    --chrome-gradient: linear-gradient(135deg, #e8e8e8 0%, #7a7a7a 50%, #e8e8e8 100%);
-    --neon-gradient: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
-    --purple-gradient: linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%);
-    --gold-gradient: linear-gradient(135deg, #ffd700 0%, #ffb700 50%, #ffd700 100%);
-    --bsb-gradient: linear-gradient(135deg, #07182E 0%, #0B2447 50%, #050505 100%);
+    --retro-gradient: linear-gradient(135deg, #0a1628 0%, #14213d 50%, #0a1628 100%);
+    --chrome-gradient: linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 50%, #e8e8e8 100%);
+    --cd-gradient: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 100%);
+    --magazine-gradient: linear-gradient(180deg, #14213d 0%, #0a1628 100%);
     
     /* Glassmorphism */
-    --glass-bg: rgba(7, 24, 46, 0.7);
-    --glass-border: rgba(0, 212, 255, 0.2);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --glass-bg: rgba(20, 33, 61, 0.85);
+    --glass-border: rgba(192, 192, 192, 0.3);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     
     /* Typography */
-    --font-heading: 'Orbitron', 'Arial Black', sans-serif;
-    --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-heading: 'Arial Black', 'Impact', sans-serif;
+    --font-body: 'Verdana', 'Tahoma', sans-serif;
     --font-retro: 'Courier New', monospace;
-    --font-vhs: 'VT323', 'Courier New', monospace;
+    --font-handwritten: 'Comic Sans MS', 'Chalkboard', cursive;
     
     /* Spacing */
-    --section-padding: 80px 20px;
-    --card-gap: 30px;
+    --section-padding: 60px 20px;
+    --card-gap: 25px;
     
     /* Transitions */
     --transition-fast: 0.3s ease;
@@ -62,13 +61,14 @@ html {
 
 body {
     font-family: var(--font-body);
-    background: var(--deep-black);
-    color: var(--chrome-light);
+    background: var(--dark-navy);
+    color: var(--pure-white);
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
 }
 
+/* Animated Starfield Background */
 body::before {
     content: '';
     position: fixed;
@@ -76,15 +76,21 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(ellipse at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(157, 78, 221, 0.1) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, var(--pure-white), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 50px 160px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 90px 40px, var(--pure-white), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.5), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
     pointer-events: none;
-    z-index: -1;
+    z-index: -2;
+    animation: twinkle 5s ease-in-out infinite;
 }
 
-/* VHS Scanline Overlay Effect */
+/* Soft Glow Overlay */
 body::after {
     content: '';
     position: fixed;
@@ -92,54 +98,97 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.15) 0px,
-        rgba(0, 0, 0, 0.15) 1px,
-        transparent 1px,
-        transparent 2px
-    );
+    background: 
+        radial-gradient(ellipse at 20% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(157, 78, 221, 0.08) 0%, transparent 50%);
     pointer-events: none;
-    z-index: 9999;
-    opacity: 0.3;
-    animation: scanlineFlicker 8s infinite;
+    z-index: -1;
 }
 
-/* SCROLLBAR STYLING */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.8; }
+}
+
+/* SCROLLBAR STYLING - Retro Chrome */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--deep-black);
+    background: var(--dark-navy);
+    border-left: 1px solid var(--silver);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--neon-gradient);
-    border-radius: 5px;
+    background: var(--chrome-gradient);
+    border-radius: 6px;
+    border: 2px solid var(--dark-navy);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--purple-gradient);
+    background: var(--pure-white);
 }
 
 /* ========================================
-   NAVIGATION - PREMIUM STICKY NAVBAR
+   RETRO LOADING SCREEN
+   ======================================== */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeOut 1s ease 2s forwards;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-text {
+    font-family: var(--font-heading);
+    font-size: clamp(2em, 5vw, 4em);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    background: var(--chrome-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* ========================================
+   NAVIGATION - Sticky 90s Style Navbar
    ======================================== */
 .header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
-    box-shadow: 0 4px 30px rgba(0, 212, 255, 0.1);
+    background: rgba(10, 22, 40, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--silver);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     transition: var(--transition-medium);
 }
 
 .header.scrolled {
-    background: rgba(10, 10, 15, 0.95);
-    box-shadow: 0 4px 30px rgba(0, 212, 255, 0.2);
+    background: rgba(5, 10, 20, 0.98);
+    box-shadow: 0 4px 30px rgba(0, 212, 255, 0.3);
 }
 
 .navigators nav {
@@ -154,51 +203,47 @@ body::after {
 
 .navigators .logo {
     font-family: var(--font-heading);
-    font-size: 1.8em;
+    font-size: 1.6em;
     background: var(--chrome-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: uppercase;
     letter-spacing: 3px;
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-    animation: glowPulse 3s infinite;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    text-decoration: none;
     position: relative;
 }
 
-/* VHS REC Indicator */
-.navigators .logo::after {
-    content: 'REC';
+/* CD-inspired decorative element */
+.navigators .logo::before {
+    content: '💿';
     position: absolute;
-    top: -8px;
-    right: -25px;
-    font-size: 0.4em;
-    color: #ff0000;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 2px 6px;
-    border-radius: 3px;
-    animation: blinkRec 1s infinite;
-    font-family: var(--font-vhs);
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.6em;
+    animation: spin 3s linear infinite;
 }
 
-@keyframes blinkRec {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+@keyframes spin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
 }
 
 .navigators .nav-links {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     list-style: none;
 }
 
 .navigators a {
-    color: var(--chrome-light);
+    color: var(--pure-white);
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.95em;
-    padding: 12px 25px;
-    border-radius: 30px;
+    font-size: 0.9em;
+    padding: 10px 20px;
+    border-radius: 20px;
     background: transparent;
     border: 1px solid transparent;
     text-transform: uppercase;
@@ -208,6 +253,7 @@ body::after {
     overflow: hidden;
 }
 
+/* Magazine cutout style hover effect */
 .navigators a::before {
     content: '';
     position: absolute;
@@ -215,42 +261,46 @@ body::after {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: var(--neon-gradient);
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
     transition: var(--transition-medium);
-    z-index: -1;
 }
 
 .navigators a:hover::before,
 .navigators a.active::before {
-    left: 0;
+    left: 100%;
 }
 
 .navigators a:hover,
 .navigators a.active {
-    color: var(--deep-black);
+    background: var(--chrome-gradient);
+    color: var(--dark-navy);
     border-color: var(--neon-blue);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5),
-                0 0 40px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5),
+                0 0 30px rgba(0, 212, 255, 0.3);
+    transform: translateY(-2px);
 }
 
-/* VHS-inspired Nav Link Hover Indicator */
+/* Sparkle effect on hover */
 .navigators a::after {
-    content: '▶';
+    content: '✨';
     position: absolute;
-    right: 10px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 0.7em;
-    color: var(--neon-blue);
     opacity: 0;
     transition: var(--transition-fast);
-    font-family: var(--font-vhs);
 }
 
 .navigators a:hover::after,
 .navigators a.active::after {
     opacity: 1;
-    right: 8px;
+    animation: sparkle 0.5s ease-in-out;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.3); }
 }
 
 /* Mobile Menu Toggle */
@@ -268,10 +318,11 @@ body::after {
     background: var(--neon-blue);
     border-radius: 2px;
     transition: var(--transition-fast);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
 /* ========================================
-   HERO SECTION - CINEMATIC BANNER WITH VHS EFFECTS
+   HERO SECTION - Large Banner with Retro Feel
    ======================================== */
 .hero_banner {
     position: relative;
@@ -292,24 +343,30 @@ body::after {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, 
-        rgba(5, 5, 5, 0.3) 0%,
-        rgba(7, 24, 46, 0.5) 50%,
-        rgba(5, 5, 5, 0.9) 100%);
+        rgba(10, 22, 40, 0.4) 0%,
+        rgba(10, 22, 40, 0.6) 50%,
+        rgba(10, 22, 40, 0.9) 100%);
     z-index: 1;
 }
 
-/* VHS Tape Border Effect */
+/* VHS scanline overlay for retro feel */
 .hero_banner::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    border: 3px solid rgba(0, 212, 255, 0.1);
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 3px
+    );
     pointer-events: none;
-    z-index: 3;
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    opacity: 0.3;
 }
 
 .hero_banner img {
@@ -317,25 +374,34 @@ body::after {
     height: 100%;
     object-fit: cover;
     animation: slowZoom 20s infinite alternate;
-    filter: saturate(1.1) contrast(1.05);
+    filter: saturate(1.1) contrast(1.05) brightness(0.9);
 }
 
-/* VHS Timestamp Style */
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/* Retro timestamp decoration */
 .hero_banner .vhs-timestamp {
     position: absolute;
     bottom: 30px;
     right: 40px;
-    font-family: var(--font-vhs);
-    font-size: 1.2em;
-    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--font-retro);
+    font-size: 1.1em;
+    color: var(--pure-white);
     text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
     z-index: 3;
     letter-spacing: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--silver);
 }
 
 .hero_content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
     padding: 20px;
     max-width: 900px;
@@ -346,14 +412,45 @@ body::after {
     font-size: clamp(3em, 8vw, 6em);
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 10px;
+    letter-spacing: 8px;
     margin-bottom: 20px;
     background: var(--chrome-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
     animation: titleReveal 1.5s ease-out;
+    position: relative;
+}
+
+/* Decorative stars around title */
+.hero_title::before,
+.hero_title::after {
+    content: '⭐';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.3em;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+.hero_title::before {
+    left: -50px;
+}
+
+.hero_title::after {
+    right: -50px;
+}
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero_subtitle {
@@ -364,6 +461,18 @@ body::after {
     margin-bottom: 40px;
     animation: fadeInUp 1s ease-out 0.5s both;
     text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+    font-weight: bold;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero_cta {
@@ -386,18 +495,19 @@ body::after {
     transition: var(--transition-fast);
     position: relative;
     overflow: hidden;
+    display: inline-block;
 }
 
 .btn-primary {
-    background: var(--neon-gradient);
-    color: var(--deep-black);
-    border: none;
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    background: linear-gradient(135deg, var(--neon-blue), var(--electric-purple));
+    color: var(--pure-white);
+    border: 2px solid transparent;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 50px rgba(0, 212, 255, 0.8),
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.8),
                 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -409,17 +519,18 @@ body::after {
 
 .btn-secondary:hover {
     background: var(--neon-blue);
-    color: var(--deep-black);
+    color: var(--dark-navy);
     box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    transform: translateY(-3px);
 }
 
-/* Scroll Indicator */
+/* Scroll Indicator with bounce animation */
 .scroll-indicator {
     position: absolute;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 2;
+    z-index: 3;
     animation: bounce 2s infinite;
 }
 
@@ -430,15 +541,21 @@ body::after {
     text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
 }
 
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
 /* ========================================
    MUSIC QUICK LINKS SECTION
    ======================================== */
 .music_Home {
     padding: var(--section-padding);
-    background: var(--bsb-gradient);
+    background: var(--retro-gradient);
     position: relative;
 }
 
+/* Pixel star decorations */
 .music_Home::before {
     content: '';
     position: absolute;
@@ -446,9 +563,14 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%2300d4ff" opacity="0.1"/></svg>');
-    background-size: 50px 50px;
+    background-image: 
+        radial-gradient(1px 1px at 10% 20%, var(--pure-white), transparent),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 70% 40%, var(--pure-white), transparent),
+        radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.8), transparent);
+    background-size: 100px 100px;
     pointer-events: none;
+    opacity: 0.5;
 }
 
 .section-title {
@@ -468,16 +590,17 @@ body::after {
     transform: translateX(-50%);
 }
 
+/* Magazine-style underline */
 .section-title::after {
     content: '';
     position: absolute;
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
+    width: 150px;
     height: 3px;
-    background: var(--neon-gradient);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
 }
 
 .music_container {
@@ -493,16 +616,18 @@ body::after {
 .music_link-card {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    border: 2px solid var(--glass-border);
+    border-radius: 15px;
     padding: 40px 30px;
     text-align: center;
     text-decoration: none;
     transition: var(--transition-medium);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* CD-inspired rotating border effect */
 .music_link-card::before {
     content: '';
     position: absolute;
@@ -514,6 +639,11 @@ body::after {
     animation: rotate 4s linear infinite;
     opacity: 0;
     transition: var(--transition-fast);
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .music_link-card:hover::before {
@@ -530,7 +660,7 @@ body::after {
 .music_link-card h3 {
     font-family: var(--font-heading);
     font-size: 1.3em;
-    color: var(--chrome-light);
+    color: var(--pure-white);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 10px;
@@ -539,7 +669,7 @@ body::after {
 }
 
 .music_link-card p {
-    color: var(--metallic-silver);
+    color: var(--silver);
     font-size: 0.9em;
     position: relative;
     z-index: 1;
@@ -550,7 +680,7 @@ body::after {
    ======================================== */
 .previews {
     padding: var(--section-padding);
-    background: linear-gradient(180deg, var(--deep-black) 0%, var(--dark-navy) 100%);
+    background: linear-gradient(180deg, var(--deep-black) 0%, var(--midnight-blue) 100%);
     position: relative;
 }
 
@@ -565,23 +695,25 @@ body::after {
 .preview-card {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 25px;
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
     padding: 50px 40px;
     text-align: center;
     transition: var(--transition-medium);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
+/* Polaroid frame effect */
 .preview-card::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3px;
-    background: var(--neon-gradient);
+    height: 5px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--electric-purple));
     transform: scaleX(0);
     transition: var(--transition-medium);
 }
@@ -593,6 +725,7 @@ body::after {
 .preview-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 30px 80px rgba(0, 212, 255, 0.2);
+    border-color: var(--neon-blue);
 }
 
 .preview-card h3 {
@@ -602,10 +735,11 @@ body::after {
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
 }
 
 .preview-card p {
-    color: var(--metallic-silver);
+    color: var(--silver);
     font-size: 1.1em;
     line-height: 1.8;
     margin-bottom: 30px;
@@ -614,19 +748,21 @@ body::after {
 .preview-link {
     display: inline-block;
     padding: 15px 35px;
-    background: var(--neon-gradient);
-    color: var(--deep-black);
+    background: linear-gradient(135deg, var(--neon-blue), var(--electric-purple));
+    color: var(--pure-white);
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 50px;
     transition: var(--transition-fast);
+    border: 2px solid transparent;
 }
 
 .preview-link:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 40px rgba(0, 212, 255, 0.5);
+    border-color: var(--pure-white);
 }
 
 /* ========================================
@@ -654,9 +790,29 @@ body::after {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom,
-        rgba(10, 10, 15, 0.5) 0%,
-        rgba(10, 10, 15, 0.9) 100%);
+        rgba(10, 22, 40, 0.5) 0%,
+        rgba(10, 22, 40, 0.9) 100%);
     z-index: 1;
+}
+
+/* VHS scanline effect on hero */
+.about_hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.2;
 }
 
 .about_hero img {
@@ -680,11 +836,30 @@ body::after {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
 }
 
 .about_group {
-    padding: 100px 20px;
-    background: var(--bsb-gradient);
+    padding: 80px 20px;
+    background: var(--retro-gradient);
+    position: relative;
+}
+
+/* Star decorations */
+.about_group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20% 30%, var(--pure-white), transparent),
+        radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 80% 40%, var(--pure-white), transparent);
+    background-size: 150px 150px;
+    pointer-events: none;
+    opacity: 0.4;
 }
 
 .group_card {
@@ -696,10 +871,25 @@ body::after {
     align-items: center;
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 30px;
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
     padding: 50px;
-    box-shadow: var(--glass-shadow);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+/* Polaroid frame effect */
+.group_card::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 5%;
+    width: 90%;
+    height: 15px;
+    background: var(--pure-white);
+    border-radius: 5px;
+    opacity: 0.1;
 }
 
 .about_groupIMG {
@@ -708,10 +898,12 @@ body::after {
 
 .about_groupIMG img {
     width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+    border: 3px solid var(--silver);
 }
 
+/* Cassette tape inspired border */
 .about_groupIMG::before {
     content: '';
     position: absolute;
@@ -720,8 +912,9 @@ body::after {
     right: -10px;
     bottom: -10px;
     border: 2px solid var(--neon-blue);
-    border-radius: 25px;
+    border-radius: 20px;
     opacity: 0.5;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 
 .group_card h1 {
@@ -731,10 +924,11 @@ body::after {
     margin-bottom: 25px;
     text-transform: uppercase;
     letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
 }
 
 .group_info {
-    color: var(--chrome-light);
+    color: var(--silver);
     font-size: 1.1em;
     line-height: 2;
 }
@@ -743,14 +937,31 @@ body::after {
     padding: 80px 20px 40px;
     text-align: center;
     background: var(--deep-black);
+    position: relative;
+}
+
+/* Sparkle decorations */
+.bandMembers_Title::before {
+    content: '✨ ⭐ ✨';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    letter-spacing: 20px;
+    opacity: 0.6;
 }
 
 .bandMembers_Title h1 {
     font-family: var(--font-heading);
     font-size: clamp(2em, 5vw, 3em);
-    color: var(--chrome-light);
+    color: var(--pure-white);
     text-transform: uppercase;
     letter-spacing: 5px;
+    background: var(--chrome-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .band_Members {
@@ -760,35 +971,38 @@ body::after {
     gap: 40px;
     max-width: 1400px;
     margin: 0 auto;
+    background: linear-gradient(180deg, var(--deep-black) 0%, var(--midnight-blue) 100%);
 }
 
 .band_card {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 25px;
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
     transition: var(--transition-medium);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* CD-inspired hover effect */
 .band_card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--neon-gradient);
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, var(--neon-blue), transparent 30%);
+    animation: rotate 6s linear infinite;
     opacity: 0;
-    transition: var(--transition-medium);
-    z-index: -1;
+    transition: var(--transition-fast);
 }
 
 .band_card:hover::before {
-    opacity: 0.1;
+    opacity: 0.2;
 }
 
 .band_card:hover {
@@ -806,6 +1020,8 @@ body::after {
     box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
     margin-bottom: 25px;
     transition: var(--transition-medium);
+    position: relative;
+    z-index: 1;
 }
 
 .band_card:hover img {
@@ -820,12 +1036,17 @@ body::after {
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 .band_desc {
-    color: var(--metallic-silver);
+    color: var(--silver);
     font-size: 1em;
     line-height: 1.8;
+    position: relative;
+    z-index: 1;
 }
 
 /* ========================================
@@ -843,7 +1064,27 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bsb-gradient);
+    background: var(--retro-gradient);
+}
+
+/* VHS scanline effect */
+.history_hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.2;
 }
 
 .history_hero h1 {
@@ -856,18 +1097,36 @@ body::after {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     z-index: 2;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
 }
 
 .history {
-    padding: 100px 20px;
+    padding: 80px 20px;
     background: var(--deep-black);
     position: relative;
+}
+
+/* Star decorations */
+.history::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 40% 30%, var(--pure-white), transparent),
+        radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.5), transparent);
+    background-size: 100px 100px;
+    pointer-events: none;
+    opacity: 0.3;
 }
 
 .timeline-container {
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
+    z-index: 1;
 }
 
 .timeline-container::before {
@@ -878,7 +1137,7 @@ body::after {
     top: 0;
     bottom: 0;
     width: 3px;
-    background: var(--neon-gradient);
+    background: linear-gradient(180deg, var(--neon-blue), var(--electric-purple));
     box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
 }
 
@@ -917,13 +1176,24 @@ body::after {
 .timeline-content {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 25px;
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
     padding: 40px;
     max-width: 450px;
     margin-right: 50px;
     position: relative;
     transition: var(--transition-medium);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Cassette tape decoration */
+.timeline-content::after {
+    content: '📼';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.2em;
+    opacity: 0.6;
 }
 
 .timeline-content:hover {
@@ -935,12 +1205,13 @@ body::after {
 .timeline-year {
     font-family: var(--font-heading);
     font-size: 3em;
-    background: var(--neon-gradient);
+    background: linear-gradient(135deg, var(--neon-blue), var(--electric-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 15px;
     display: block;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
 }
 
 .timeline-content p {
@@ -992,8 +1263,26 @@ body::after {
 }
 
 .albums_section {
-    padding: 100px 20px;
-    background: var(--deep-black);
+    padding: 80px 20px;
+    background: var(--retro-gradient);
+    position: relative;
+}
+
+/* Star decorations */
+.albums_section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 30% 40%, var(--pure-white), transparent),
+        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 50% 80%, var(--pure-white), transparent);
+    background-size: 120px 120px;
+    pointer-events: none;
+    opacity: 0.3;
 }
 
 .albums_grid {
@@ -1002,30 +1291,53 @@ body::after {
     gap: 40px;
     max-width: 1400px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .album_card {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 25px;
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
     padding: 30px;
     transition: var(--transition-medium);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* CD-inspired rotating border effect */
 .album_card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, 
-        transparent 0%, 
-        rgba(0, 212, 255, 0.1) 100%);
-    pointer-events: none;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, var(--neon-blue), transparent 30%);
+    animation: rotate 8s linear infinite;
+    opacity: 0;
+    transition: var(--transition-fast);
+}
+
+.album_card:hover::before {
+    opacity: 0.2;
+}
+
+/* Cassette tape inspired label */
+.album_card::after {
+    content: '📼';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    opacity: 0;
+    transition: var(--transition-fast);
+}
+
+.album_card:hover::after {
+    opacity: 0.7;
 }
 
 .album_card:hover {
@@ -1043,6 +1355,8 @@ body::after {
     border: 3px solid var(--neon-blue);
     box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
     transition: var(--transition-medium);
+    position: relative;
+    z-index: 1;
 }
 
 .album_card:hover img {
@@ -1057,21 +1371,28 @@ body::after {
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 .release_date {
-    color: var(--metallic-silver);
+    color: var(--silver);
     font-size: 0.9em;
     margin-bottom: 20px;
     font-weight: normal;
+    position: relative;
+    z-index: 1;
 }
 
 .tracklist {
     list-style: none;
+    position: relative;
+    z-index: 1;
 }
 
 .tracklist li {
-    color: var(--chrome-light);
+    color: var(--silver);
     padding: 10px 0;
     border-bottom: 1px solid rgba(0, 212, 255, 0.1);
     transition: var(--transition-fast);
@@ -1091,15 +1412,101 @@ body::after {
     color: var(--neon-blue);
     font-weight: bold;
     margin-right: 10px;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
 /* ========================================
-   FOOTER
+   GALLERY SECTION - Polaroid Style
+   ======================================== */
+.gallery_section {
+    padding: 80px 20px;
+    background: linear-gradient(180deg, var(--deep-black) 0%, var(--midnight-blue) 100%);
+    position: relative;
+}
+
+.gallery_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery_item {
+    position: relative;
+    background: var(--pure-white);
+    padding: 15px 15px 40px;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: var(--transition-medium);
+    transform: rotate(-2deg);
+}
+
+.gallery_item:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.gallery_item:nth-child(3n) {
+    transform: rotate(-1deg);
+}
+
+.gallery_item:hover {
+    transform: rotate(0deg) scale(1.05) translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+    z-index: 10;
+}
+
+.gallery_item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+/* Retro tape sticker decoration */
+.gallery_item::before {
+    content: '📼';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 2em;
+    transform: rotate(15deg);
+    opacity: 0.8;
+}
+
+.gallery_item::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 25px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--electric-purple));
+    opacity: 0.7;
+    border-radius: 3px;
+}
+
+/* ========================================
+   FOOTER - Retro Style with Icons
    ======================================== */
 .footer {
     background: linear-gradient(180deg, var(--dark-navy) 0%, var(--deep-black) 100%);
     padding: 60px 20px 30px;
-    border-top: 1px solid var(--glass-border);
+    border-top: 2px solid var(--silver);
+    position: relative;
+}
+
+/* Decorative stars */
+.footer::before {
+    content: '⭐ ✨ ⭐';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2em;
+    letter-spacing: 30px;
+    opacity: 0.5;
 }
 
 .CallToAction {
@@ -1108,6 +1515,8 @@ body::after {
     gap: 20px;
     flex-wrap: wrap;
     margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .CallToAction a {
@@ -1116,8 +1525,9 @@ body::after {
     border-radius: 50%;
     overflow: hidden;
     transition: var(--transition-fast);
-    border: 2px solid var(--glass-border);
+    border: 2px solid var(--silver);
     position: relative;
+    background: var(--chrome-gradient);
 }
 
 .CallToAction a::before {
@@ -1127,13 +1537,13 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--neon-gradient);
+    background: linear-gradient(135deg, var(--neon-blue), var(--electric-purple));
     opacity: 0;
     transition: var(--transition-fast);
 }
 
 .CallToAction a:hover::before {
-    opacity: 0.3;
+    opacity: 0.8;
 }
 
 .CallToAction a:hover {
@@ -1152,10 +1562,12 @@ body::after {
 
 .footer p {
     text-align: center;
-    color: var(--metallic-silver);
+    color: var(--silver);
     font-size: 0.9em;
     padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--silver);
+    position: relative;
+    z-index: 1;
 }
 
 /* Back to Top Button */
