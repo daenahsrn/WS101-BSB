@@ -1,14 +1,14 @@
 /* ========================================
    BACKSTREET BOYS FAN WEBSITE - REDESIGN
-   Y2K/90s Retro Cinematic Theme
+   Y2K/90s Retro Cinematic Theme with VHS Aesthetics
    ======================================== */
 
 /* CSS VARIABLES - Color Palette */
 :root {
     /* Core Colors */
-    --deep-black: #0a0a0f;
-    --dark-navy: #0d1b2a;
-    --midnight-blue: #1b263b;
+    --deep-black: #050505;
+    --dark-navy: #07182E;
+    --midnight-blue: #0B2447;
     --metallic-silver: #c0c0c0;
     --chrome-light: #e8e8e8;
     --chrome-dark: #7a7a7a;
@@ -26,10 +26,10 @@
     --neon-gradient: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
     --purple-gradient: linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%);
     --gold-gradient: linear-gradient(135deg, #ffd700 0%, #ffb700 50%, #ffd700 100%);
-    --bsb-gradient: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #0a0a0f 100%);
+    --bsb-gradient: linear-gradient(135deg, #07182E 0%, #0B2447 50%, #050505 100%);
     
     /* Glassmorphism */
-    --glass-bg: rgba(13, 27, 42, 0.7);
+    --glass-bg: rgba(7, 24, 46, 0.7);
     --glass-border: rgba(0, 212, 255, 0.2);
     --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     
@@ -37,6 +37,7 @@
     --font-heading: 'Orbitron', 'Arial Black', sans-serif;
     --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --font-retro: 'Courier New', monospace;
+    --font-vhs: 'VT323', 'Courier New', monospace;
     
     /* Spacing */
     --section-padding: 80px 20px;
@@ -81,6 +82,27 @@ body::before {
         radial-gradient(ellipse at 50% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
     pointer-events: none;
     z-index: -1;
+}
+
+/* VHS Scanline Overlay Effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.3;
+    animation: scanlineFlicker 8s infinite;
 }
 
 /* SCROLLBAR STYLING */
@@ -141,6 +163,27 @@ body::before {
     letter-spacing: 3px;
     text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
     animation: glowPulse 3s infinite;
+    position: relative;
+}
+
+/* VHS REC Indicator */
+.navigators .logo::after {
+    content: 'REC';
+    position: absolute;
+    top: -8px;
+    right: -25px;
+    font-size: 0.4em;
+    color: #ff0000;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2px 6px;
+    border-radius: 3px;
+    animation: blinkRec 1s infinite;
+    font-family: var(--font-vhs);
+}
+
+@keyframes blinkRec {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .navigators .nav-links {
@@ -190,6 +233,26 @@ body::before {
                 0 0 40px rgba(0, 212, 255, 0.3);
 }
 
+/* VHS-inspired Nav Link Hover Indicator */
+.navigators a::after {
+    content: '▶';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7em;
+    color: var(--neon-blue);
+    opacity: 0;
+    transition: var(--transition-fast);
+    font-family: var(--font-vhs);
+}
+
+.navigators a:hover::after,
+.navigators a.active::after {
+    opacity: 1;
+    right: 8px;
+}
+
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
@@ -208,7 +271,7 @@ body::before {
 }
 
 /* ========================================
-   HERO SECTION - CINEMATIC BANNER
+   HERO SECTION - CINEMATIC BANNER WITH VHS EFFECTS
    ======================================== */
 .hero_banner {
     position: relative;
@@ -229,10 +292,24 @@ body::before {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, 
-        rgba(10, 10, 15, 0.3) 0%,
-        rgba(10, 10, 15, 0.5) 50%,
-        rgba(10, 10, 15, 0.9) 100%);
+        rgba(5, 5, 5, 0.3) 0%,
+        rgba(7, 24, 46, 0.5) 50%,
+        rgba(5, 5, 5, 0.9) 100%);
     z-index: 1;
+}
+
+/* VHS Tape Border Effect */
+.hero_banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid rgba(0, 212, 255, 0.1);
+    pointer-events: none;
+    z-index: 3;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
 }
 
 .hero_banner img {
@@ -240,6 +317,20 @@ body::before {
     height: 100%;
     object-fit: cover;
     animation: slowZoom 20s infinite alternate;
+    filter: saturate(1.1) contrast(1.05);
+}
+
+/* VHS Timestamp Style */
+.hero_banner .vhs-timestamp {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-family: var(--font-vhs);
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    z-index: 3;
+    letter-spacing: 2px;
 }
 
 .hero_content {
@@ -1174,6 +1265,104 @@ body::before {
     }
     50% {
         transform: translateY(-20px);
+    }
+}
+
+/* VHS Scanline Flicker Animation */
+@keyframes scanlineFlicker {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    5% {
+        opacity: 0.25;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    15% {
+        opacity: 0.28;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    55% {
+        opacity: 0.35;
+    }
+    60% {
+        opacity: 0.3;
+    }
+}
+
+/* VHS Tracking Effect Animation */
+@keyframes trackingDistortion {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    2% {
+        transform: translateX(-2px);
+    }
+    4% {
+        transform: translateX(2px);
+    }
+    6% {
+        transform: translateX(0);
+    }
+}
+
+/* VHS Glitch Effect */
+@keyframes vhsGlitch {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    10% {
+        filter: hue-rotate(5deg) brightness(1.1);
+    }
+    20% {
+        filter: hue-rotate(-5deg) brightness(0.95);
+    }
+    30% {
+        filter: hue-rotate(0deg);
+    }
+}
+
+/* VHS Static Noise Animation */
+@keyframes staticNoise {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Rewind Animation */
+@keyframes rewindEffect {
+    0% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scaleX(0.8) skewX(10deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+/* CRT Screen Turn On Effect */
+@keyframes crtTurnOn {
+    0% {
+        transform: scale(1, 0.002);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
