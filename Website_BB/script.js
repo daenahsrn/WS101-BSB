@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tracklistItems.forEach(t => t.style.color = '');
             
             // Add active style to clicked track
-            this.style.color = 'var(--neon-blue)';
+            this.style.color = 'var(--coral-pink)';
             
             // You can add more functionality here like playing audio
             console.log('Track selected:', this.textContent);
